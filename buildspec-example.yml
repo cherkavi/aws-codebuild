@@ -1,0 +1,12 @@
+version: 0.2
+phases:
+    pre_build:
+        commands:
+            - echo "step 01.01"
+            - echo "step 01.02"
+    build:
+        commands:
+            - echo "step 02.01"
+            - echo "step 02.02"
+            - echo "step 02.03"
+
