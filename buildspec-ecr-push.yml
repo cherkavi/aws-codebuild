@@ -2,7 +2,6 @@ version: 0.2
 phases:
     build:
         commands:
-            - sudo service docker restart
             - docker build -f Dockerfile-ubuntu-empty -t ubuntu-empty .
             - docker tag ubuntu-empty 330996503740.dkr.ecr.us-east-1.amazonaws.com/udacity-cherkavi:ubuntu-empty-${TAG_PREFIX}
             - docker push 330996503740.dkr.ecr.us-east-1.amazonaws.com/udacity-cherkavi:ubuntu-empty-${TAG_PREFIX}
