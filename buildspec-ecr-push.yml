@@ -2,7 +2,10 @@ version: 0.2
 phases:
     build:
         commands:
+            - AWS_ACCOUNT_ID=`aws sts get-caller-identity --query Account | jq -r . `
+            - echo $AWS_ACCOUNT_ID
+            - echo 'docker login' # docker login -u AWS -p $(aws ecr get-login-password --region ${AWS_REGION}) ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
             - docker build -f Dockerfile-ubuntu-empty -t ubuntu-empty .
             - docker tag ubuntu-empty 330996503740.dkr.ecr.us-east-1.amazonaws.com/udacity-cherkavi:ubuntu-empty-${TAG_PREFIX}
-            - docker push 330996503740.dkr.ecr.us-east-1.amazonaws.com/udacity-cherkavi:ubuntu-empty-${TAG_PREFIX}
+            - echo 'push'  # docker push 330996503740.dkr.ecr.us-east-1.amazonaws.com/udacity-cherkavi:ubuntu-empty-${TAG_PREFIX}
 
